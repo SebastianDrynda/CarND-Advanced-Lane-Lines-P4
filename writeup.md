@@ -43,7 +43,7 @@ I then used the output `objpoints` and `imgpoints` to compute the camera calibra
 
 ![Camera calibration image](output_images/01_undistort_output.png)
 
-The camera calibration and distortion coefficients are stored using `pickle` for later use [camera_calibration.p] (camera_cal/camera_calibration.p).
+The camera calibration and distortion coefficients are stored using `pickle` for later use [camera_calibration.p](camera_cal/camera_calibration.p).
 
 
 ### Pipeline (single images)

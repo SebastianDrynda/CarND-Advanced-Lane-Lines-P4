@@ -50,8 +50,9 @@ The camera calibration and distortion coefficients are stored using `pickle` for
 
 #### 1. Provide an example of a distortion-corrected image.
 
-To demonstrate this step, I will describe how I apply the distortion correction to one of the test images like this one:
-![alt text][image2]
+To demonstrate this step, I will describe how I apply the distortion correction to one of the test images like this one. The camera calibration and distortion coefficients was loaded with the `pickle` module. I applied this distortion correction to the test image using the `cv2.undistort()` function and obtained this result: 
+
+![Distortion-corrected image](images/02_undistort_image)
 
 #### 2. Describe how (and identify where in your code) you used color transforms, gradients or other methods to create a thresholded binary image.  Provide an example of a binary image result.
 

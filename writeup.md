@@ -48,6 +48,8 @@ The camera calibration and distortion coefficients are stored using `pickle` for
 
 ### Pipeline (single images)
 
+The code for the image pipeline is contained in [02_Pipeline_Images.ipynb](02_Pipeline_Images.ipynb)
+
 #### 1. Provide an example of a distortion-corrected image.
 
 To demonstrate this step, I will describe how I apply the distortion correction to one of the test images like this one. The camera calibration and distortion coefficients was loaded with the `pickle` module. I applied this distortion correction to the test image using the `cv2.undistort()` function and obtained this result: 
@@ -58,7 +60,32 @@ To demonstrate this step, I will describe how I apply the distortion correction 
 
 I used a combination of color and gradient thresholds to generate a binary image (thresholding steps at lines # through # in `another_file.py`).  Here's an example of my output for this step.  (note: this is not actually from one of the test images)
 
-![alt text][image3]
+
+The code used to experimetn with color spaces, gradients, and thresholds can be found on the [02_Thresholded_Binary_Image.ipynb](02_Thresholded_Binary_Image.ipynb.
+
+A color transformation to HLS with thresholds was done `In [8]` and the S channel was selected because it cleaner than the H channel result and a bit better than the R channel or simple grayscaling. Furthermore the S channel is still doing a fairly robust job of picking up the lines under very different color and contrast conditions.
+
+![S Channel](output_images/03_hls_s_channel_output.png)
+
+After the color transformation had been done, it was time for gradients. The following gradients were calculated:
+
+- Gradient Sobel X: `In [10]` and `In [11]`
+![Gradient Sobel X](output_images/04_sobel_x_output.png)
+
+- Gradient Sobel Y: `In [10]` and `In [12]`
+![Gradient Sobel Y](output_images/05_sobel_y_output.png)
+
+- Gradient Magnitude : `In [13]` and `In [14]`
+- Gradient Direction : `In [15]` and `In [16]`
+- Combination of Sobel X and Sobel Y: `In [17]`
+- Combination of all the above (Sobel X and Sobel Y) or (Magnitude and Gradient): `In [18]`
+
+After a few back-and-forward exploration with thresholds, the following picture will show the different gradients on some test images side-by-side:
+
+![Combination all](output_images/08_binary_combo_sobel_all.png)
+
+The full combination of these gradients leads to a "noisy" binary image. That is why on the main notebook [Advanced Lane Lines notebook](Advance%20Lane%20Lines.ipynb). Only the combination of Sobel X and Sobel Y was used to continue with the pipeline. The following image shows the binary image obtained with that combination on the test images:
+
 
 #### 3. Describe how (and identify where in your code) you performed a perspective transform and provide an example of a transformed image.
 

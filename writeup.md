@@ -58,10 +58,7 @@ To demonstrate this step, I will describe how I apply the distortion correction 
 
 #### 2. Describe how (and identify where in your code) you used color transforms, gradients or other methods to create a thresholded binary image.  Provide an example of a binary image result.
 
-I used a combination of color and gradient thresholds to generate a binary image (thresholding steps at lines # through # in `another_file.py`).  Here's an example of my output for this step.  (note: this is not actually from one of the test images)
-
-
-The code used to experimetn with color spaces, gradients, and thresholds can be found on the [02_Thresholded_Binary_Image.ipynb](02_Thresholded_Binary_Image.ipynb.
+I used a combination of color and gradient thresholds to generate a binary image. The code used to experiment with color spaces, gradients, and thresholds can be found on the [02_Thresholded_Binary_Image.ipynb](02_Thresholded_Binary_Image.ipynb).
 
 A color transformation to HLS with thresholds was done `In [8]` and the S channel was selected because it cleaner than the H channel result and a bit better than the R channel or simple grayscaling. Furthermore the S channel is still doing a fairly robust job of picking up the lines under very different color and contrast conditions.
 
@@ -76,9 +73,16 @@ After the color transformation had been done, it was time for gradients. The fol
 ![Gradient Sobel Y](output_images/05_sobel_y_output.png)
 
 - Gradient Magnitude : `In [13]` and `In [14]`
+![Gradient Sobel Y](output_images/06_sobel_mag_output.png)
+
 - Gradient Direction : `In [15]` and `In [16]`
+![Gradient Sobel Y](output_images/07_sobel_dir_output.png)
+
 - Combination of Sobel X and Sobel Y: `In [17]`
+![Combination Sobel X Y](output_images/09_binary_combo_sobel_xy.png)
+
 - Combination of all the above (Sobel X and Sobel Y) or (Magnitude and Gradient): `In [18]`
+![Combination all](output_images/08_binary_combo_sobel_all.png)
 
 After a few back-and-forward exploration with thresholds, the following picture will show the different gradients on some test images side-by-side:
 

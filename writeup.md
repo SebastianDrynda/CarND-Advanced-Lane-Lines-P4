@@ -93,7 +93,7 @@ The perspective transformation code could be found on [03_Perspective_Transform.
 
 Four points where selected as the source of the perspective transformation. Those points are highlighted on the following image (`In [10]`):
 
-![Highlighted Transformation points](out_images/10_highlighted_straight_lines.png)
+![Highlighted Transformation points](output_images/10_highlighted_straight_lines.png)
 
 The destination points for the transformation where to get a clear picture of the street:
 
@@ -121,7 +121,7 @@ This resulted in the following source and destination points:
 
 Using `cv2.getPerspectiveTransform`, a transformation matrix was calculated (`In [11]`). The result of the transformation:
 
-![Transformation](out_images/11_warped_straight_lines.png)
+![Transformation](output_images/11_warped_straight_lines.png)
 
 
 #### 4. Describe how (and identify where in your code) you identified lane-line pixels and fit their positions with a polynomial?

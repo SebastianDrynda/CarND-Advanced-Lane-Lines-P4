@@ -60,35 +60,31 @@ To demonstrate this step, I will describe how I apply the distortion correction 
 
 I used a combination of color and gradient thresholds to generate a binary image. The code used to experiment with color spaces, gradients, and thresholds can be found on the [02_Thresholded_Binary_Image.ipynb](02_Thresholded_Binary_Image.ipynb).
 
-A color transformation to HLS with thresholds was done `In [8]` and the S channel was selected because it cleaner than the H channel result and a bit better than the R channel or simple grayscaling. Furthermore the S channel is still doing a fairly robust job of picking up the lines under very different color and contrast conditions.
+A color transformation to HLS with min_tresh=170 and max_tresh=255 was done `In [8]` and the S channel was selected because it is cleaner than the H channel result and a bit better than the R channel or simple grayscaling. Furthermore the S channel is still doing a fairly robust job of picking up the lines under very different color and contrast conditions.
 
 ![S Channel](output_images/03_hls_s_channel_output.png)
 
 After the color transformation had been done, it was time for gradients. The following gradients were calculated:
 
-- Gradient Sobel X: `In [10]` and `In [11]`
+- Gradient Sobel X: `In [10]` and `In [11]` with min_tresh=10, max_tresh=120, kernel_size=9 
 ![Gradient Sobel X](output_images/04_sobel_x_output.png)
 
-- Gradient Sobel Y: `In [10]` and `In [12]`
+- Gradient Sobel Y: `In [10]` and `In [12]` with min_tresh=10, max_tresh=120, kernel_size=9 
 ![Gradient Sobel Y](output_images/05_sobel_y_output.png)
 
-- Gradient Magnitude : `In [13]` and `In [14]`
+- Gradient Magnitude : `In [13]` and `In [14]` with min_tresh=10, max_tresh=120, kernel_size=9 
 ![Gradient Sobel Y](output_images/06_sobel_mag_output.png)
 
-- Gradient Direction : `In [15]` and `In [16]`
+- Gradient Direction : `In [15]` and `In [16]` with min_tresh=0.7, max_tresh=1.3, kernel_size=11
 ![Gradient Sobel Y](output_images/07_sobel_dir_output.png)
 
-- Combination of Sobel X and Sobel Y: `In [17]`
+- Combination of Sobel X and Sobel Y: `In [17]` 
 ![Combination Sobel X Y](output_images/09_binary_combo_sobel_xy.png)
 
 - Combination of all the above (Sobel X and Sobel Y) or (Magnitude and Gradient): `In [18]`
 ![Combination all](output_images/08_binary_combo_sobel_all.png)
 
-After a few back-and-forward exploration with thresholds, the following picture will show the different gradients on some test images side-by-side:
-
-![Combination all](output_images/08_binary_combo_sobel_all.png)
-
-The full combination of these gradients leads to a "noisy" binary image. That is why on the main notebook [Advanced Lane Lines notebook](Advance%20Lane%20Lines.ipynb). Only the combination of Sobel X and Sobel Y was used to continue with the pipeline. The following image shows the binary image obtained with that combination on the test images:
+After a some experiments with thresholds, kernel size and different combinations, I decided to take the combination of all of them ((Sobel X AND Sobel Y) OR (Magnitude and Gradient)) to create the binary image.
 
 
 #### 3. Describe how (and identify where in your code) you performed a perspective transform and provide an example of a transformed image.

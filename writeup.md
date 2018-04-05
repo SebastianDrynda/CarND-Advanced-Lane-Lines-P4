@@ -84,7 +84,10 @@ After the color transformation had been done, it was time for gradients. The fol
 - Combination of all the above (Sobel X and Sobel Y) or (Magnitude and Gradient): `In [18]`
 ![Combination all](output_images/08_binary_combo_sobel_all.png)
 
-After a some experiments with thresholds, kernel size and different combinations, I decided to take the combination of all of them ((Sobel X AND Sobel Y) OR (Magnitude and Gradient)) to create the binary image.
+- Combination of S channel and Sobel X: `In [20]`
+![Combination all](output_images/10_binary_combo_schannel_sobelx.png)
+
+After a some experiments with different thresholds, kernel sizes and combinations, I decided to take the combination of S channel and Sobel x (Gradient in x direction emphasizes edges closer to vertical) to create the binary image. Especially the loss in the curve line is the lowest here.
 
 
 #### 3. Describe how (and identify where in your code) you performed a perspective transform and provide an example of a transformed image.
@@ -103,6 +106,7 @@ src = np.float32(
     [((img_size[0] / 6) - 10), img_size[1]],
     [(img_size[0] * 5 / 6) + 60, img_size[1]],
     [(img_size[0] / 2 + 55), img_size[1] / 2 + 100]])
+
 dst = np.float32(
     [[(img_size[0] / 4), 0],
     [(img_size[0] / 4), img_size[1]],

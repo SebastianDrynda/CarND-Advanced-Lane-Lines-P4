@@ -92,9 +92,9 @@ After a some experiments with different thresholds, kernel sizes and combination
 
 #### 3. Describe how (and identify where in your code) you performed a perspective transform and provide an example of a transformed image.
 
-The perspective transformation code could be found on [03_Perspective_Transform.ipynb](03_Perspective_Transform.ipynb). The image used were the one with straight lane lines.
+The perspective transformation code could be found on [03_Perspective_Transform.ipynb](03_Perspective_Transform.ipynb). The images used were the one with straight lane lines.
 
-Four points where selected as the source of the perspective transformation. Those points are highlighted on the following image (`In [10]`):
+Four points where selected as the source of the perspective transformation. Those points are highlighted on the following image (`In [8-10]`):
 
 ![Highlighted Transformation points](output_images/11_draw_src_points.png)
 

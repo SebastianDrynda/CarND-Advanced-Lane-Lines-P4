@@ -48,7 +48,7 @@ The camera calibration and distortion coefficients are stored using `pickle` for
 
 ### Pipeline (single images)
 
-The code for the image pipeline is contained in [02_Pipeline_Images.ipynb](02_Pipeline_Images.ipynb)
+The code for the image pipeline is contained in [04_Pipeline.ipynb](04_Pipeline.ipynb)
 
 #### 1. Provide an example of a distortion-corrected image.
 
@@ -85,14 +85,15 @@ After the color transformation had been done, it was time for gradients. The fol
 ![Combination all](output_images/08_binary_combo_sobel_all.png)
 
 - Combination of S channel and Sobel X: `In [19]` and `In [20]`
-![Combination all](output_images/10_binary_combo_schannel_sobelx.png)
+![Combination S channel, Sobel X](output_images/10_binary_combo_schannel_sobelx.png)
 
 After a some experiments with different thresholds, kernel sizes and combinations, I decided to take the combination (OR) of S channel and Sobel x (Gradient in x direction emphasizes edges closer to vertical) to create the binary image. Especially the loss in the curve line is the lowest here.
 
 
 #### 3. Describe how (and identify where in your code) you performed a perspective transform and provide an example of a transformed image.
 
-The perspective transformation code could be found on [03_Perspective_Transform.ipynb](03_Perspective_Transform.ipynb). The images used were the one with straight lane lines.
+The code used to experiment with perspective transformation can be found on the [03_Perspective_Transform.ipynb](03_Perspective_Transform.ipynb). 
+The images used were the one with straight lane lines.
 
 Four points where selected as the source of the perspective transformation. Those points are highlighted on the following image (`In [8-10]`):
 
@@ -125,17 +126,18 @@ This resulted in the following source and destination points:
 | 705, 460      | 1080, 0        |
 
 
-Using `cv2.getPerspectiveTransform`, a transformation matrix was calculated (`In [11]`). The results of the transformation:
+Using `cv2.getPerspectiveTransform`, a transformation matrix was calculated (`In [11]`). 
 
+The results of the perspective transformation:
 ![Transformation](output_images/12_warped_straight_lines.png)
 
-The results of the binary wraped transformation for all test images:
-![Transformation](output_images/13_binary_warped.png)
+The results of the binary wraped perspective transformation:
+![Binary wraped Transformation](output_images/13_binary_warped.png)
 
 
 #### 4. Describe how (and identify where in your code) you identified lane-line pixels and fit their positions with a polynomial?
 
-The line detection code could be found at `In [14-16]`. The algorithm calculates the histogram on the X axis. Finds the picks on the left and right side of the image, and collect the non-zero points. When all the points are collected, a polynomial fit is used to find the line model. On the same code, another polynomial fit is done on the same points transforming pixels to meters to be used later on the curvature calculation. 
+The line detection code could be found at `In [14-16]` in [04_Pipeline.ipynb](04_Pipeline.ipynb). The algorithm calculates the histogram on the X axis. Finds the picks on the left and right side of the image, and collect the non-zero points. When all the points are collected, a polynomial fit is used to find the line model. On the same code, another polynomial fit is done on the same points transforming pixels to meters to be used later on the curvature calculation. 
 
 The following image shows the points found on each window, the windows and the polynomials:
 

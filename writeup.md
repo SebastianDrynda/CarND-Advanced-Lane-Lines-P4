@@ -107,21 +107,22 @@ src = np.float32(
     [(img_size[0] * 5 / 6) + 60, img_size[1]],
     [(img_size[0] / 2 + 65), img_size[1] / 2 + 100]])
 
+offset = 200
 dst = np.float32(
-    [[(img_size[0] / 4), 0],
-    [(img_size[0] / 4), img_size[1]],
-    [(img_size[0] * 3 / 4), img_size[1]],
-    [(img_size[0] * 3 / 4), 0]])
+    [[offset, 0],
+     [offset, img_size[1]], 
+     [img_size[0]-offset, img_size[1]],
+     [img_size[0]-offset, 0]])
 ```
 
 This resulted in the following source and destination points:
 
 | Source        | Destination   | 
 |:-------------:|:-------------:| 
-| 575, 460      | 320, 0        | 
-| 188, 720      | 320, 720      |
-| 1127, 720     | 960, 720      |
-| 705, 460      | 960, 0        |
+| 575, 460      | 200, 0        | 
+| 188, 720      | 200, 720      |
+| 1127, 720     | 1080, 720      |
+| 705, 460      | 1080, 0        |
 
 
 Using `cv2.getPerspectiveTransform`, a transformation matrix was calculated (`In [11]`). The result of the transformation:

@@ -125,9 +125,10 @@ This resulted in the following source and destination points:
 | 705, 460      | 1080, 0        |
 
 
-Using `cv2.getPerspectiveTransform`, a transformation matrix was calculated (`In [11]`). The result of the transformation:
+Using `cv2.getPerspectiveTransform`, a transformation matrix was calculated (`In [11]`). The results of the transformation:
 
 ![Transformation](output_images/12_warped_straight_lines.png)
+![Transformation](output_images/13_binary_warped.png)
 
 
 #### 4. Describe how (and identify where in your code) you identified lane-line pixels and fit their positions with a polynomial?

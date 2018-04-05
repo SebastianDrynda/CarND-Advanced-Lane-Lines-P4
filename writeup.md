@@ -87,7 +87,7 @@ After the color transformation had been done, it was time for gradients. The fol
 - Combination of S channel and Sobel X: `In [19]` and `In [20]`
 ![Combination all](output_images/10_binary_combo_schannel_sobelx.png)
 
-After a some experiments with different thresholds, kernel sizes and combinations, I decided to take the combination of S channel and Sobel x (Gradient in x direction emphasizes edges closer to vertical) to create the binary image. Especially the loss in the curve line is the lowest here.
+After a some experiments with different thresholds, kernel sizes and combinations, I decided to take the combination (OR) of S channel and Sobel x (Gradient in x direction emphasizes edges closer to vertical) to create the binary image. Especially the loss in the curve line is the lowest here.
 
 
 #### 3. Describe how (and identify where in your code) you performed a perspective transform and provide an example of a transformed image.
@@ -96,16 +96,16 @@ The perspective transformation code could be found on [03_Perspective_Transform.
 
 Four points where selected as the source of the perspective transformation. Those points are highlighted on the following image (`In [10]`):
 
-![Highlighted Transformation points](output_images/10_highlighted_straight_lines.png)
+![Highlighted Transformation points](output_images/11_draw_src_points.png)
 
 The destination points for the transformation where to get a clear picture of the street:
 
 ```python
 src = np.float32(
-    [[(img_size[0] / 2) - 55, img_size[1] / 2 + 100],
-    [((img_size[0] / 6) - 10), img_size[1]],
+    [[(img_size[0] / 2) - 65, img_size[1] / 2 + 100],
+    [((img_size[0] / 6) - 25), img_size[1]],
     [(img_size[0] * 5 / 6) + 60, img_size[1]],
-    [(img_size[0] / 2 + 55), img_size[1] / 2 + 100]])
+    [(img_size[0] / 2 + 65), img_size[1] / 2 + 100]])
 
 dst = np.float32(
     [[(img_size[0] / 4), 0],
@@ -118,14 +118,15 @@ This resulted in the following source and destination points:
 
 | Source        | Destination   | 
 |:-------------:|:-------------:| 
-| 585, 460      | 320, 0        | 
-| 203, 720      | 320, 720      |
+| 575, 460      | 320, 0        | 
+| 188, 720      | 320, 720      |
 | 1127, 720     | 960, 720      |
-| 695, 460      | 960, 0        |
+| 705, 460      | 960, 0        |
+
 
 Using `cv2.getPerspectiveTransform`, a transformation matrix was calculated (`In [11]`). The result of the transformation:
 
-![Transformation](output_images/11_warped_straight_lines.png)
+![Transformation](output_images/12_warped_straight_lines.png)
 
 
 #### 4. Describe how (and identify where in your code) you identified lane-line pixels and fit their positions with a polynomial?

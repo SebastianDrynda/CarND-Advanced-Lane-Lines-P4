@@ -84,7 +84,7 @@ After the color transformation had been done, it was time for gradients. The fol
 - Combination of all the above (Sobel X and Sobel Y) or (Magnitude and Gradient): `In [18]`
 ![Combination all](output_images/08_binary_combo_sobel_all.png)
 
-- Combination of S channel and Sobel X: `In [20]`
+- Combination of S channel and Sobel X: `In [19]` and `In [20]`
 ![Combination all](output_images/10_binary_combo_schannel_sobelx.png)
 
 After a some experiments with different thresholds, kernel sizes and combinations, I decided to take the combination of S channel and Sobel x (Gradient in x direction emphasizes edges closer to vertical) to create the binary image. Especially the loss in the curve line is the lowest here.
